@@ -38,6 +38,5 @@ FiveM server install:
 3. Import sesx.sql into your database.
 4. Use included server.cfg to either replace or modify yours.
 * Modify line 2: replace with your mysql host, dbname, user and password.
-* Modify line 38: replace steamID with your own.
 * If replacing server.cfg, all the normal changes will need to be made(port, rcon, key, etc.)
  
