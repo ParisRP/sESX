@@ -28,10 +28,12 @@ This is an effort to make the process of installing an ESX server a more simple 
 A working FiveM server.
 
 Video How-To of install:
+
 [![Installing sESX](http://schw.im/sesx/assets/sESX_install_howdo.png)](https://www.youtube.com/watch?v=YLv2B8y6sJ4)
 
 
 If you don't have a running FiveM server install yet, this may help:
+
 [![Installing FiveM on linux server](http://schw.im/sesx/assets/fivem_install_howdo.png)](https://www.youtube.com/watch?v=9RJUXCV9V94)
 
 ### Download & Installation
