@@ -90,3 +90,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 
 ALTER TABLE `user_inventory`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE user_inventory
+ADD INDEX user_inventory_ident_item (identifier, item);
