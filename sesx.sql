@@ -33,7 +33,7 @@ INSERT INTO `job_grades` (`id`, `job_name`, `grade`, `name`, `label`, `salary`, 
 
 CREATE TABLE IF NOT EXISTS `users` (
 `id` int(11) NOT NULL,
-  `identifier` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
+  `identifier` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `license` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
   `money` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8mb4_bin DEFAULT '',
