@@ -1,6 +1,6 @@
 Locales['cs'] = {
   -- Inventory
-  ['cash'] = 'hotovost $%s',
+  ['cash'] = 'hotovost',
   ['inventory'] = 'inventář',
   ['use'] = 'použít',
   ['give'] = 'dát',
@@ -13,8 +13,12 @@ Locales['cs'] = {
   ['noammo'] = 'nemáte dostatek munice!',
   ['gave_item'] = 'dali jste ~y~%sx~s~ ~b~%s~s~ ~y~%s~s~',
   ['received_item'] = 'obdrželi jste ~y~%sx~s~ ~b~%s~s~ od ~b~%s~s~',
-  ['gave_weapon'] = 'dali jste ~y~1x~s~ ~b~%s~s~ s ~o~%sx~s~ náboji ~y~%s~s~.',
-  ['received_weapon'] = 'obdrželi jste ~y~1x~s~ ~b~%s~s~ s ~o~%sx~s~ náboji od ~b~%s~s~.',
+  ['gave_weapon'] = 'you gave ~y~1x~s~ ~b~%s~s~ to ~y~%s~s~.',
+  ['gave_weapon_ammo'] = 'you gave ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets to ~y~%s~s~.',
+  ['gave_weapon_hasalready'] = '~y~%s~s~ already have an ~y~%s~s~',
+  ['received_weapon'] = 'you received ~y~1x~s~ ~b~%s~s~ from ~b~%s~s~.',
+  ['received_weapon_ammo'] = 'you received ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets from ~b~%s~s~.',
+  ['received_weapon_hasalready'] = '~b~%s~s~ attempted to give you an ~y~%s~s~, but you already have one.',
   ['gave_ammo'] = 'dali jste ~o~%sx~s~ nábojů ~y~%s~s~.',
   ['received_ammo'] = 'obdrželi jste ~o~%sx~s~ nábojů od ~b~%s~s~.',
   ['gave_money'] = 'dali jste ~g~$%s~s~ ~y~%s~s~',
@@ -74,6 +78,7 @@ Locales['cs'] = {
   ['chat_clear_all'] = 'vyčistit chat pro všechny',
   -- Locale settings
   ['locale_digit_grouping_symbol'] = ' ',
+  ['locale_currency'] = '$%s',
   -- Weapons
   ['weapon_knife'] = 'knife',
   ['weapon_nightstick'] = 'nightstick',

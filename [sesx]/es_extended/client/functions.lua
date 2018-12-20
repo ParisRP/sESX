@@ -300,7 +300,7 @@ ESX.Game.SpawnObject = function(model, coords, cb)
 			Citizen.Wait(0)
 		end
 
-		local obj = CreateObject(model, coords.x, coords.y, coords.z, true, true, true)
+		local obj = CreateObject(model, coords.x, coords.y, coords.z, true, false, true)
 
 		if cb ~= nil then
 			cb(obj)
@@ -318,7 +318,7 @@ ESX.Game.SpawnLocalObject = function(model, coords, cb)
 			Citizen.Wait(0)
 		end
 
-		local obj = CreateObject(model, coords.x, coords.y, coords.z, false, true, true)
+		local obj = CreateObject(model, coords.x, coords.y, coords.z, false, false, true)
 
 		if cb ~= nil then
 			cb(obj)
@@ -641,7 +641,7 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 
 		model             = GetEntityModel(vehicle),
 
-		plate             = GetVehicleNumberPlateText(vehicle),
+		plate             = ESX.Math.Trim(GetVehicleNumberPlateText(vehicle)),
 		plateIndex        = GetVehicleNumberPlateTextIndex(vehicle),
 
 		health            = GetEntityHealth(vehicle),
@@ -997,8 +997,10 @@ ESX.ShowInventory = function()
 	local elements  = {}
 
 	if ESX.PlayerData.money > 0 then
+		local formattedMoney = _U('locale_currency', ESX.Math.GroupDigits(ESX.PlayerData.money))
+
 		table.insert(elements, {
-			label     = _U('cash', ESX.PlayerData.money),
+			label     = ('%s: <span style="color:green;">%s</span>'):format(_U('cash'), formattedMoney),
 			count     = ESX.PlayerData.money,
 			type      = 'item_money',
 			value     = 'money',
@@ -1010,8 +1012,10 @@ ESX.ShowInventory = function()
 
 	for i=1, #ESX.PlayerData.accounts, 1 do
 		if ESX.PlayerData.accounts[i].money > 0 then
+			local formattedMoney = _U('locale_currency', ESX.Math.GroupDigits(ESX.PlayerData.accounts[i].money))
+
 			table.insert(elements, {
-				label     = ESX.PlayerData.accounts[i].label .. ' $' .. ESX.PlayerData.accounts[i].money,
+				label     = ('%s: <span style="color:green;">%s</span>'):format(ESX.PlayerData.accounts[i].label, formattedMoney),
 				count     = ESX.PlayerData.accounts[i].money,
 				type      = 'item_account',
 				value     = ESX.PlayerData.accounts[i].name,
@@ -1042,7 +1046,7 @@ ESX.ShowInventory = function()
 		if HasPedGotWeapon(playerPed, weaponHash, false) and Config.Weapons[i].name ~= 'WEAPON_UNARMED' then
 			local ammo = GetAmmoInPedWeapon(playerPed, weaponHash)
 			table.insert(elements, {
-				label     = Config.Weapons[i].label .. ' x1 [' .. ammo .. ']',
+				label     = Config.Weapons[i].label .. ' [' .. ammo .. ']',
 				count     = 1,
 				type      = 'item_weapon',
 				value     = Config.Weapons[i].name,
@@ -1105,7 +1109,11 @@ ESX.ShowInventory = function()
 				for i=1, #players, 1 do
 					if players[i] ~= PlayerId() then
 						foundPlayers = true
-						table.insert(elements, {label = GetPlayerName(players[i]), value = players[i]})
+
+						table.insert(elements, {
+							label = GetPlayerName(players[i]),
+							value = players[i]
+						})
 					end
 				end
 
@@ -1162,8 +1170,7 @@ ESX.ShowInventory = function()
 
 					else -- type: item_standard
 
-						ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'inventory_item_count_give',
-						{
+						ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'inventory_item_count_give', {
 							title = _U('amount')
 						}, function(data3, menu3)
 							local quantity = tonumber(data3.value)
@@ -1215,8 +1222,7 @@ ESX.ShowInventory = function()
 
 				else -- type: item_standard
 
-					ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'inventory_item_count_remove',
-					{
+					ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'inventory_item_count_remove', {
 						title = _U('amount')
 					}, function(data2, menu2)
 						local quantity = tonumber(data2.value)
@@ -1253,8 +1259,7 @@ ESX.ShowInventory = function()
 				if closestPlayer ~= -1 and closestDistance < 3.0 then
 					if pedAmmo > 0 then
 
-						ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'inventory_item_count_give',
-						{
+						ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'inventory_item_count_give', {
 							title = _U('amountammo')
 						}, function(data2, menu2)
 

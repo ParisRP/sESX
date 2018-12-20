@@ -1,6 +1,6 @@
 Locales['en'] = {
   -- Inventory
-  ['cash'] = 'cash $%s',
+  ['cash'] = 'cash',
   ['inventory'] = 'inventory',
   ['use'] = 'use',
   ['give'] = 'give',
@@ -13,8 +13,12 @@ Locales['en'] = {
   ['noammo'] = 'you do not have enough ammo!',
   ['gave_item'] = 'you gave ~y~%sx~s~ ~b~%s~s~ to ~y~%s~s~',
   ['received_item'] = 'you received ~y~%sx~s~ ~b~%s~s~ from ~b~%s~s~',
-  ['gave_weapon'] = 'you gave ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets to ~y~%s~s~.',
-  ['received_weapon'] = 'you received ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets from ~b~%s~s~.',
+  ['gave_weapon'] = 'you gave ~y~1x~s~ ~b~%s~s~ to ~y~%s~s~.',
+  ['gave_weapon_ammo'] = 'you gave ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets to ~y~%s~s~.',
+  ['gave_weapon_hasalready'] = '~y~%s~s~ already have an ~y~%s~s~',
+  ['received_weapon'] = 'you received ~y~1x~s~ ~b~%s~s~ from ~b~%s~s~.',
+  ['received_weapon_ammo'] = 'you received ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets from ~b~%s~s~.',
+  ['received_weapon_hasalready'] = '~b~%s~s~ attempted to give you an ~y~%s~s~, but you already have one.',
   ['gave_ammo'] = 'you gave ~o~%sx~s~ bullets to ~y~%s~s~.',
   ['received_ammo'] = 'you received ~o~%sx~s~ bullets from ~b~%s~s~.',
   ['gave_money'] = 'you gave ~g~$%s~s~ to ~y~%s~s~',
@@ -74,6 +78,7 @@ Locales['en'] = {
   ['chat_clear_all'] = 'clear the chat for everyone',
   -- Locale settings
   ['locale_digit_grouping_symbol'] = ',',
+  ['locale_currency'] = '$%s',
   -- Weapons
   ['weapon_knife'] = 'knife',
   ['weapon_nightstick'] = 'nightstick',

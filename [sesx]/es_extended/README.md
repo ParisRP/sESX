@@ -1,9 +1,10 @@
 # es_extended
-es_extended is a roleplay framework for FiveM. It is developed on top of [EssentialMode](https://essentialmode.com/) (aka ES), thus commonly named ESX - the **Es**sentialMode **E**xtended framework for FiveM.
+es_extended is a roleplay framework for FiveM. It is developed on top of [EssentialMode](https://essentialmode.com/) (aka ES), thus commonly named ESX - the **Es**sentialMode E**x**tended framework for FiveM.
 
 ### Links & Read more
 - [ESX Documentation](https://esx-org.github.io/) (incomplete)
 - [ES Documentation](https://docs.essentialmode.com/)
+- [ESX Discord Community](https://discord.gg/MsWzPqE)
 - [FiveM Forum Thread](https://forum.fivem.net/t/release-esx-base/39881)
 - [FiveM Native Reference](https://runtime.fivem.net/doc/reference.html)
 
@@ -22,7 +23,7 @@ es_extended is a roleplay framework for FiveM. It is developed on top of [Essent
 
 ### Requirements
 This order also applies in the startup order.
-- Base events
+
 - [mysql-async](https://github.com/brouznouf/fivem-mysql-async)
 - [essentialmode](https://github.com/kanersps/essentialmode)
 - [esplugin_mysql](https://github.com/kanersps/esplugin_mysql)
@@ -63,8 +64,6 @@ git clone https://github.com/ESX-Org/esx_menu_list [esx]/[ui]/esx_menu_list
 - Configure your `server.cfg` to look like this
 
 ```
-start baseevents
-
 start mysql-async
 start essentialmode
 start esplugin_mysql

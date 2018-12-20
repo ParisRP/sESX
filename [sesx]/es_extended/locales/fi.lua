@@ -1,6 +1,6 @@
 Locales['fi'] = {
   -- Inventory
-  ['cash'] = 'käteinen $%s',
+  ['cash'] = 'käteinen',
   ['inventory'] = 'reppu',
   ['use'] = 'käytä',
   ['give'] = 'anna',
@@ -13,8 +13,12 @@ Locales['fi'] = {
   ['noammo'] = 'sinulla ei ole ammuksia!',
   ['gave_item'] = 'sinä annoit ~y~%sx~s~ ~b~%s~s~ henkilölle ~y~%s~s~',
   ['received_item'] = 'sinä sait ~y~%sx~s~ ~b~%s~s~ henkilöltä ~b~%s~s~',
-  ['gave_weapon'] = 'sinä annoit ~y~1x~s~ ~b~%s~s~ jossa oli ~o~%sx~s~ ammuksia henkilölle ~y~%s~s~.',
-  ['received_weapon'] = 'sinä sait ~y~1x~s~ ~b~%s~s~ jossa oli ~o~%sx~s~ ammuksia henkilöltä ~b~%s~s~.',
+  ['gave_weapon'] = 'you gave ~y~1x~s~ ~b~%s~s~ to ~y~%s~s~.',
+  ['gave_weapon_ammo'] = 'you gave ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets to ~y~%s~s~.',
+  ['gave_weapon_hasalready'] = '~y~%s~s~ already have an ~y~%s~s~',
+  ['received_weapon'] = 'you received ~y~1x~s~ ~b~%s~s~ from ~b~%s~s~.',
+  ['received_weapon_ammo'] = 'you received ~y~1x~s~ ~b~%s~s~ with ~o~%sx~s~ bullets from ~b~%s~s~.',
+  ['received_weapon_hasalready'] = '~b~%s~s~ attempted to give you an ~y~%s~s~, but you already have one.',
   ['gave_ammo'] = 'sinä annoit ~o~%sx~s~ ammuksia henkilölle ~y~%s~s~.',
   ['received_ammo'] = 'sinä sait ~o~%sx~s~ ammuksia henkilöltä ~b~%s~s~.',
   ['gave_money'] = 'sinä annoit ~g~$%s~s~ henkilölle ~y~%s~s~',
@@ -74,6 +78,7 @@ Locales['fi'] = {
   ['chat_clear_all'] = 'tyhjennä chatti kaikilta',
   -- Locale settings
   ['locale_digit_grouping_symbol'] = ' ',
+  ['locale_currency'] = '$%s',
   -- Weapons
   ['weapon_knife'] = 'veitsi',
   ['weapon_nightstick'] = 'pamppu',

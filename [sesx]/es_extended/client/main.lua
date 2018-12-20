@@ -32,7 +32,7 @@ AddEventHandler('esx:playerLoaded', function(xPlayer)
 			})
 
 			ESX.UI.HUD.UpdateElement('account_' .. xPlayer.accounts[i].name, {
-				money = xPlayer.accounts[i].money
+				money = ESX.Math.GroupDigits(xPlayer.accounts[i].money)
 			})
 		end
 
@@ -76,56 +76,6 @@ AddEventHandler('playerSpawned', function()
 	isDead = false
 end)
 
-AddEventHandler('baseevents:onPlayerDied', function(killerType, deathCoords)
-	local playerPed = PlayerPedId()
-
-	local data = {
-		killed      = false,
-		killerType  = killerType,
-		deathCoords = deathCoords,
-		deathCause  = GetPedCauseOfDeath(playerPed)
-	}
-
-	TriggerEvent('esx:onPlayerDeath', data)
-	TriggerServerEvent('esx:onPlayerDeath', data)
-end)
-
-AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
-	local playerPed = PlayerPedId()
-	local killer    = GetPlayerFromServerId(killerId)
-
-	if NetworkIsPlayerActive(killer) then
-		local victimCoords = data.killerpos
-		local weaponHash   = data.weaponhash
-
-		data.killerpos  = nil
-		data.weaponhash = nil
-
-		local killerPed    = GetPlayerPed(killer)
-		local killerCoords = GetEntityCoords(killerPed)
-		local distance     = GetDistanceBetweenCoords(victimCoords[1], victimCoords[2], victimCoords[3], killerCoords, false)
-
-		table.insert(data, {
-			victimCoords = victimCoords,
-			weaponHash   = weaponHash,
-			deathCause   = GetPedCauseOfDeath(playerPed),
-			killed       = true,
-			killerId     = killerId,
-			killerCoords = { table.unpack(killerCoords) },
-			distance     = ESX.Round(distance)
-		})
-
-	else
-		table.insert(data, {
-			killed     = false,
-			deathCause = GetPedCauseOfDeath(playerPed)
-		})
-	end
-
-	TriggerEvent('esx:onPlayerDeath', data)
-	TriggerServerEvent('esx:onPlayerDeath', data)
-end)
-
 AddEventHandler('esx:onPlayerDeath', function()
 	isDead = true
 end)
@@ -166,7 +116,7 @@ AddEventHandler('esx:setAccountMoney', function(account)
 
 	if Config.EnableHud then
 		ESX.UI.HUD.UpdateElement('account_' .. account.name, {
-			money = account.money
+			money = ESX.Math.GroupDigits(account.money)
 		})
 	end
 end)
@@ -181,6 +131,7 @@ AddEventHandler('esx:addInventoryItem', function(item, count)
 	for i=1, #ESX.PlayerData.inventory, 1 do
 		if ESX.PlayerData.inventory[i].name == item.name then
 			ESX.PlayerData.inventory[i] = item
+			break
 		end
 	end
 
@@ -196,6 +147,7 @@ AddEventHandler('esx:removeInventoryItem', function(item, count)
 	for i=1, #ESX.PlayerData.inventory, 1 do
 		if ESX.PlayerData.inventory[i].name == item.name then
 			ESX.PlayerData.inventory[i] = item
+			break
 		end
 	end
 
@@ -571,6 +523,7 @@ Citizen.CreateThread(function()
 	while true do
 
 		Citizen.Wait(1000)
+
 		if ESX ~= nil and ESX.PlayerLoaded and PlayerSpawned then
 			local playerPed = PlayerPedId()
 			local coords    = GetEntityCoords(playerPed)
@@ -585,7 +538,6 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-
 		Citizen.Wait(1000)
 
 		local playerPed = PlayerPedId()
